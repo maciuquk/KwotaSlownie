@@ -1,0 +1,90 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@model AmountModel
+
+
+<div class="container">
+
+    <form asp-controller="Amount" asp-action="AmountInWords" method="post">
+
+        @*<div>
+                <label asp-for="Amount">Podaj kwotę</label>
+                <input type="number" class="form-control" asp-for="Amount" />
+            </div>
+            <div>
+                <label asp-for="IsPolish" class="form-check-label">Polski</label>
+                <input asp-for="IsPolish" class="form-check-input"  type="radio" value="option1" checked/>
+            </div>
+            <div>
+                <label asp-for="IsEnglish" class="form-check-label">Angielski</label>
+                <input asp-for="IsEnglish" class="form-check-input" type="radio" value="option2"/>
+            </div>
+            <div>
+                <label asp-for="IsNBPCurrency"></label>
+                <input asp-for="IsNBPCurrency" />
+            </div>*@
+
+
+        <div class="mb-lg-3">
+            <label asp-for="Amount" class="form-label">Podaj kwotę</label>
+            <input class="form-control" asp-for="Amount" placeholder="Podaj kwotę, np: 1040,50">
+        </div>
+
+        @*<div class="form-check">
+                <input class="form-check-input" asp-for="IsPolish" type="radio" name="IsPolish" id="exampleRadios1" value="false" checked>
+                <label class="form-check-label" asp-for="IsPolish">
+                    Polski
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" asp-for="IsEnglish" type="radio" name="IsEnglish" id="exampleRadios2" value="true">
+                <label class="form-check-label" asp-for="IsEnglish">
+                    Angielski
+                </label>
+            </div>*@
+
+        <div class="form-check form-switch">
+            <input class="form-check-input" asp-for="IsNBPCurrency" type="checkbox" id="flexSwitchCheckChecked" unchecked>
+            <label class="form-check-label" asp-for="IsNBPCurrency">Dodaj kurs wg NBP</label>
+        </div>
+
+
+
+
+        <input class="form-control" asp-for="AmountInWords" type="hidden">
+        <br />
+        <button type="submit" class="btn btn-outline-primary">Wyślij</button>
+    </form>
+
+
+    @if (Model.AmountInWords != null)
+    {
+        <br />
+        <h2> Kwota słownie:</h2>
+        <input class="form-control" id="input" value="@Model.AmountInWords" type="text">
+        <br />
+        <button class="btn btn-outline-primary" id="copy">Kopiuj do schowka</button>
+
+    }
+
+</div>
+
+<script type="text/javascript">
+    function copy() {
+        var copyText = document.querySelector("#input");
+        copyText.select();
+        document.execCommand("copy");
+    }
+
+    document.querySelector("#copy").addEventListener("click", copy);
+
+</script>
+
+
+
+
+
