@@ -18,6 +18,12 @@ namespace KwotaSlownie.Controllers
         [HttpPost]
         public IActionResult AmountInWords(AmountModel amountFromView)
         {
+            if (amountFromView.Amount.Contains(".") || !amountFromView.Amount.Contains(","))
+            {
+                amountFromView.Amount = "Wpisz poprawdne dane!";
+                return RedirectToAction("Index", amountFromView);
+            }
+
 
             var amountInWords = AmountToWords.ToWords(amountFromView.Amount);
 

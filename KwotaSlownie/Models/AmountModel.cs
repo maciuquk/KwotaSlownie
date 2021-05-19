@@ -14,4 +14,6 @@ namespace KwotaSlownie.Models
         public bool IsNBPCurrency { get; set; }
 
     }
+
+
 }
