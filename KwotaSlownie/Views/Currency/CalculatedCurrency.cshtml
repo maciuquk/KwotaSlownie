@@ -1,0 +1,61 @@
+﻿
+@model KwotaSlownie.ViewModel.CurrencyAmountViewmodel
+
+<div class="container">
+
+    @{
+        string dane = "Kwota " + Model.UserAmount + "€ to " + Model.UserAmount * Model.ChoosedCurrency + "PLN, wg kursu " + Model.Info1;
+        string dane2 = Model.UserAmount * Model.ChoosedCurrency + "PLN";
+        string dane3 = Math.Round(Model.UserAmount * Model.ChoosedCurrency, 2) + "PLN";
+    }
+    <div class="input-group mb-3">
+        <div class="input-group-prepend">
+
+            <button class="btn btn-outline-primary" id="copy">Kopiuj do schowka</button>
+        </div>
+        <input class="form-control" id="input" value="@dane" type="text">
+    </div>
+    <div class="input-group mb-3">
+        <div class="input-group-prepend">
+
+            <button class="btn btn-outline-primary" id="copy2">Kopiuj do schowka</button>
+        </div>
+        <input class="form-control" id="input2" value="@dane2" type="text">
+    </div>
+    <div class="input-group mb-3">
+        <div class="input-group-prepend">
+
+            <button class="btn btn-outline-primary" id="copy3">Kopiuj do schowka</button>
+        </div>
+        <input class="form-control" id="input3" value="@dane3" type="text">
+    </div>
+
+
+</div>
+
+
+
+        <script type="text/javascript">
+            function copy() {
+                var copyText = document.querySelector("#input");
+                copyText.select();
+                document.execCommand("copy");
+            }
+
+            function copy2() {
+                var copyText = document.querySelector("#input2");
+                copyText.select();
+                document.execCommand("copy");
+            }
+
+            function copy3() {
+                var copyText = document.querySelector("#input3");
+                copyText.select();
+                document.execCommand("copy");
+            }
+
+            document.querySelector("#copy").addEventListener("click", copy);
+            document.querySelector("#copy2").addEventListener("click", copy2);
+            document.querySelector("#copy3").addEventListener("click", copy3);
+
+        </script>

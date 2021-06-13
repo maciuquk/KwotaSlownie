@@ -1,46 +1,16 @@
-﻿
-@{
-    ViewData["Title"] = "Index";
-    Layout = "~/Views/Shared/_Layout.cshtml";
-}
-
-@model AmountModel
-
+﻿@model AmountModel
 
 <div class="container">
 
     <form asp-controller="Amount" asp-action="AmountInWords" method="post">
-
-
         <div class="mb-lg-3">
             <label asp-for="Amount" class="form-label">Podaj kwotę</label>
             <input class="form-control" asp-for="Amount" placeholder="Podaj kwotę, np: 1040,50" required >
         </div>
-
-        @*<div class="form-check form-switch">
-            <input class="form-check-input" asp-for="IsNBPCurrency" type="checkbox" id="flexSwitchCheckChecked" unchecked>
-            <label class="form-check-label" asp-for="IsNBPCurrency">Dodaj kurs wg NBP</label>
-        </div>*@
-
-        @*<div class="form-group">
-            <label for="exampleFormControlSelect1">Wybierz datę kursu EURO:</label>
-            <select class="form-control" id="exampleFormControlSelect1">
-                <option>Brak kursu</option>
-
-               @for (int i = 0; i < 30; i++)
-               {
-                <option>@i</option>
-               }
-
-                
-            </select>
-        </div>*@
-
         <input class="form-control" asp-for="AmountInWords" type="hidden">
         <br />
         <button type="submit" class="btn btn-outline-primary">Wyślij</button>
     </form>
-
 
     @if (Model.AmountInWords != null)
     {
@@ -49,7 +19,6 @@
         <input class="form-control" id="input" value="@Model.AmountInWords" type="text">
         <br />
         <button class="btn btn-outline-primary" id="copy">Kopiuj do schowka</button>
-
     }
 
 </div>
@@ -60,7 +29,6 @@
         copyText.select();
         document.execCommand("copy");
     }
-
     document.querySelector("#copy").addEventListener("click", copy);
 
 </script>
