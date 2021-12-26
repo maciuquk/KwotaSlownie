@@ -12,17 +12,17 @@ else
 <form asp-controller="Currency" asp-action="CalculatedCurrency" method="post">
 
     <div class="mb-lg-3">
-        <label class="form-label">Podaj kwotę</label>
+        <label class="form-label">Podaj kwotę w Euro</label>
         <input class="form-control" asp-for="UserAmount" placeholder="Podaj kwotę, np: 1040,50" required>
     </div>
 
-    @Html.Raw("I wybierz datę");
+    @Html.Raw("I wybierz średni kurs Euro NBP z dnia:")
 
     <br />
 
     @foreach (var item in Model.Amounts)
      {
-        <button type="submit" asp-route-Info1="@item.Info1" asp-route-ChoosedCurrency="@item.Currency" asp-action="CalculatedCurrency" class="btn btn-outline-primary">
+        <button type="submit" asp-route-Info1="@item.Info1" asp-route-ChoosedCurrency="@item.Currency" asp-action="CalculatedCurrency" class="btn btn-outline-primary btn-sm">
             @item.Date
 
         </button>

@@ -20,7 +20,7 @@ namespace KwotaSlownie.Controllers
         {
             if (amountFromView.Amount.Contains(".") || !amountFromView.Amount.Contains(","))
             {
-                amountFromView.Amount = "Wpisz poprawdne dane!";
+                amountFromView.Amount = "Wpisz poprawne dane!";
                 return RedirectToAction("Index", amountFromView);
             }
 
