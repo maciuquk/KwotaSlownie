@@ -9,8 +9,6 @@ namespace KwotaSlownie.Models
     {
         public string Amount { get; set; }
         public string AmountInWords { get; set; }
-        //public bool IsPolish { get; set; }
-        //public bool IsEnglish { get; set; }
         public bool IsNBPCurrency { get; set; }
 
     }

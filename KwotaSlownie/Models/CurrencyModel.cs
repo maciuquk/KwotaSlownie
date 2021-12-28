@@ -7,7 +7,6 @@ namespace KwotaSlownie.Models
 {
     public class CurrencyModel
     {
-        
         public string Date { get; set; }
         public string Info1 { get; set; }
         public string Info2 { get; set; }

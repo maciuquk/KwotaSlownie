@@ -13,17 +13,13 @@ namespace KwotaSlownie.Controllers
     {
         public async Task<IActionResult> Index()
         {
-            //ściągnij daty i waluty z ostatniego miesiąca 
-
+            //download date and currency from last month 
             var currencyList = new List<CurrencyModel>();
             GetCurrency get = new GetCurrency();
 
             currencyList = await get.ParseRSS();
-            //var caurrencyList = get.ParseRSS();
             var amountViewModel = new CurrencyAmountViewmodel();
             amountViewModel.Amounts = currencyList;
-            
-
 
             return View(amountViewModel);
         }

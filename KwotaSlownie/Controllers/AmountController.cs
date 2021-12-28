@@ -24,9 +24,7 @@ namespace KwotaSlownie.Controllers
                 return RedirectToAction("Index", amountFromView);
             }
 
-
             var amountInWords = AmountToWords.ToWords(amountFromView.Amount);
-
             var newAmount = new AmountModel { Amount = amountFromView.Amount, AmountInWords = amountInWords, IsNBPCurrency = amountFromView.IsNBPCurrency };
 
             return RedirectToAction("Index",newAmount);

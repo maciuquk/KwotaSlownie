@@ -9,21 +9,19 @@ namespace KwotaSlownie.Services
 {
     public static class AmountToWords
     {
-        public static string ToWords(string kwota)
+        public static string ToWords(string amount)
         {
-            //rozdzielenie po przecinku
-            var kwotaBezGroszy = kwota.Substring(0, kwota.Length - 3);
-            var grosze = kwota.Substring(kwota.Length - 2, 2);
+            //separation after comma
+            var kwotaBezGroszy = amount.Substring(0, amount.Length - 3);
+            var grosze = amount.Substring(amount.Length - 2, 2);
 
-            //sklejenie z groszami
+            //add with grosz
             var kwotaSlownie = NumbersToText.DigitsStringToSpokenString(kwotaBezGroszy.ToString());
 
-
-            //duża początkowa literka
+            //upper first char
             kwotaSlownie = char.ToUpper(kwotaSlownie[0]) + kwotaSlownie.Substring(1);
 
             return kwotaSlownie + " " + grosze + "/100";
-            
         }
     }
 

@@ -13,21 +13,6 @@ namespace KwotaSlownie.Services
         public static List<CurrencyModel> NBPCurrency()
         {
             var currencyList = new List<CurrencyModel>();
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
             return currencyList;
         }
 
@@ -54,13 +39,11 @@ namespace KwotaSlownie.Services
 
                 foreach (var element in rss)
                 {
-                    // znajdź euro i dodaj do currency
+                    // find Euro and add to currency
 
                     string stringAmount = element.Summary.Substring(170, 6);
                     decimal temporaryAmountDecimal = Convert.ToDecimal(stringAmount);
                     @currencyList.Add(new CurrencyModel { Info1 = element.Title, Info2 = element.Summary, Date = element.PublishDate.ToString("dd/MM/yyyy"), Currency = temporaryAmountDecimal });
-                    
-                    
                 }
             }
             return currencyList;
