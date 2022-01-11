@@ -35,8 +35,6 @@ namespace KwotaSlownie.Services
                 var parser = new RssParser();
                 var rss = parser.Parse(feed);
 
-               
-
                 foreach (var element in rss)
                 {
                     // find Euro and add to currency
