@@ -12,16 +12,13 @@ namespace KwotaSlownie.Services
         public static string ToWords(string amount)
         {
             //separation after comma
-            var kwotaBezGroszy = amount.Substring(0, amount.Length - 3);
+            var amountWithoutGrosz = amount.Substring(0, amount.Length - 3);
             var grosze = amount.Substring(amount.Length - 2, 2);
-
             //add with grosz
-            var kwotaSlownie = NumbersToText.DigitsStringToSpokenString(kwotaBezGroszy.ToString());
-
+            var amountInWords = NumbersToText.DigitsStringToSpokenString(amountWithoutGrosz.ToString());
             //upper first char
-            kwotaSlownie = char.ToUpper(kwotaSlownie[0]) + kwotaSlownie.Substring(1);
-
-            return kwotaSlownie + " " + grosze + "/100";
+            amountInWords = char.ToUpper(amountInWords[0]) + amountInWords.Substring(1);
+            return amountInWords + " " + grosze + "/100";
         }
     }
 
@@ -128,11 +125,23 @@ namespace KwotaSlownie.Services
             string result = builder.ToString();
             result = Regex.Replace(result, @"\s+", " ").Trim();
 
-            return result + " złotych";
+            var currencyName = " złotych";
+
+            int kwota = Convert.ToInt32(input);
+
+            if (kwota == 1)
+            {
+                currencyName = " złoty";
+            }
+
+            else if (kwota >= 2 && kwota <=4)
+            {
+                currencyName = " złote";
+            }
+            
+            return result + currencyName;
         }
 
         #endregion // Implementation
-
-      
     }
 }
